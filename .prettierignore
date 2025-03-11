@@ -1,0 +1,17 @@
+node_modules  
+dist  
+build  
+coverage  
+public  
+.env  
+package-lock.json  
+yarn.lock  
+*.log  
+*.png  
+*.jpg  
+*.jpeg  
+*.svg  
+*.ico  
+*.mp4  
+*.zip  
+*.tar.gz  
