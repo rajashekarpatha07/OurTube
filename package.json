@@ -1,0 +1,12 @@
+{
+  "name": "ourtube",
+  "version": "1.0.0",
+  "description": "it is a clone of youtube ",
+  "license": "ISC",
+  "author": "raj shekar patha",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
