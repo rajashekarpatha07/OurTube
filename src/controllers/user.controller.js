@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (req, res) => {
     // return response
 
     const { email, fullname, username, password } = req.body;
-    console.log("Email:",email);
+    // console.log("Email:",email);
 
 
     if(
@@ -31,7 +31,7 @@ const registerUser = asyncHandler(async (req, res) => {
     //     throw new ApiError(400, "Full name is required")
     // }
 
-    const existinguser = User.findOne({
+    const existinguser = await User.findOne({
         $or: [{ username }, { email }]
     })
     if(existinguser){
@@ -39,7 +39,11 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     const avatarLocalPath = req.files?.avatar[0]?.path
-    const coverimageLocalPath = req.files?.coverimage[0]?.path
+    //const coverimageLocalPath = req.files?.coverimage[0]?.path
+    let coverimageLocalPath;
+    if(req.files && Array.isArray(req.files.coverimage) && req.files.coverimage.length>0){
+        coverimageLocalPath = req.files.coverimage[0].path
+    }
 
     if(!avatarLocalPath){
         throw new ApiError(400, "Avatar is required")
@@ -72,6 +76,7 @@ const registerUser = asyncHandler(async (req, res) => {
     return res.status(201).json(
         new ApiResponse(200, createduser, "User registerd succesfullly")
     )
+   
 
 });
 
