@@ -18,6 +18,8 @@ router.route("/register").post(
     ]),
     registerUser);
 router.route("/login").post(loginUser)
+
+//Secure Routes
 router.route("/logout").post(verifyToken, LogoutUser)
 router.route("/refresh-token").post(refreshAccessToken)
 
